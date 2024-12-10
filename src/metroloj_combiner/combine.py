@@ -33,5 +33,9 @@ def combine(root: Path, outfile: Path) -> None:
     with open(outfile, "wt") as fp:
         fp.write("\n".join(["\t".join(x) for x in writethis]))
 
-    with open(Path(outfile.parent, outfile.stem + ".txt"), 'wt') as fp:
-        fp.write("\n".join(["\t".join([str(y) for y in x]) for x in combine_channels(channels)]))
+    with open(Path(outfile.parent, outfile.stem + ".txt"), "wt") as fp:
+        fp.write(
+            "\n".join(
+                ["\t".join([str(y) for y in x]) for x in combine_channels(channels)]
+            )
+        )
