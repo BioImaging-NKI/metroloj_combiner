@@ -6,10 +6,11 @@ import statistics
 
 def combine_channels(channels: list[Channel]) -> list[list[float]]:
     res = []
-    for ich in range(len(channels[0].correlation)):
+    nchannels = len(channels[0].correlation)
+    for ich in range(nchannels):
         c0 = [x.correlation for x in channels if x.index == ich]
-        ch_mean = [0.0] * len(c0)
-        for i in range(len(c0)):
+        ch_mean = [0.0] * nchannels
+        for i in range(nchannels):
             ch_mean[i] = statistics.fmean([x[i] for x in c0])
         res.append(ch_mean)
     return res
